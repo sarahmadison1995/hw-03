@@ -20,14 +20,20 @@ The dataset "accidents" has `r nrow(accidents)` rows.
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 2 here.
+Each row in the data set represents an individual traffic accident. 
 
 ### Exercise 3
 
 Remove this text, and add your answer for Exercise 3 here.
 
-```{r label-me-1}
-# remove this comment and add the code for Exercise 3 here
+
+```{r recreation of plot, eval = TRUE}
+  accidents$day_type <- ifelse(accidents$day_of_week == "Thursday" |accidents$day_of_week == "Wednesday" |accidents$day_of_week == "Tuesday" |accidents$day_of_week == "Monday" |accidents$day_of_week == "Friday", "Weekday", "Weekend")
+ggplot(accidents, aes(x = time, fill = severity)) + 
+  geom_density(alpha = 0.5) + facet_grid(day_type ~.)
+```
+
+
 ```
 
 ### Exercise 4
