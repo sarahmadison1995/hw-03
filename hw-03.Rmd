@@ -1,7 +1,7 @@
 ---
 title: "HW 03 - Road traffic accidents"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Sarah Madison"
+date: "7.13.22"
 output: github_document
 ---
 
@@ -16,7 +16,7 @@ library(dsbox)
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
+The dataset "accidents" has `r nrow(accidents)` rows. 
 
 ### Exercise 2
 
