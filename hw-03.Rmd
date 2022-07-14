@@ -3,6 +3,8 @@ title: "HW 03 - Road traffic accidents"
 author: "Sarah Madison"
 date: "7.13.22"
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Load packages and data
@@ -34,12 +36,16 @@ ggplot(accidents, aes(x = time, fill = severity)) +
 ```
 
 
-```
-
 ### Exercise 4
 
 Remove this text, and add your answer for Exercise 4 here.
 
-```{r label-me-2}
-# remove this comment and add the code for Exercise 4 here
+
+```{r }
+library(ggridges)
+ggplot(accidents, aes(x = time, y = day_of_week, fill = day_of_week)) + 
+  geom_density_ridges(alpha = 0.5) + facet_grid(severity ~.)
 ```
+
+
+
