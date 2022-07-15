@@ -38,14 +38,26 @@ ggplot(accidents, aes(x = time, fill = severity)) +
 
 ### Exercise 4
 
-Remove this text, and add your answer for Exercise 4 here.
 
 
-```{r }
+
+```{r my own graph, eval = TRUE}
 library(ggridges)
 ggplot(accidents, aes(x = time, y = day_of_week, fill = day_of_week)) + 
   geom_density_ridges(alpha = 0.5) + facet_grid(severity ~.)
 ```
 
 
+I know I used the same type of visualization plot here as above, but I couldn't find a better way to represent my variables...
+I created the above visualization to depict traffic accident frequencies throughout the day on different days of the week. I separated the graphs according to seriousness of the accident. Before interpreting the visualization, I need to point out something odd. The times range from -10:00:00 - 30:00:00. This is equivalent to 2:00 pm the previous day - 10:00 am the following day.This is a bizarre range, but there are instances occurring during those times. Consequently, these accidents are listed as occurring on one day, but the timestamp indicates that they actually occurred the previous or following day. I could have tried to select for those instances and recode them into their correct day category then try to cut the graph off somehow so that it only included the appropriate 24 hour period. I didn't do this though because I don't really know why this odd thing is happening and I don't want to incorrectly manipulate the data. This is, however, a good example of data being wonky.
+
+Anyways, the figure shows that fatal accidents only occurred on friday, while serious and slight accidents occurred on all days of the week. This is extremely interesting to me. What is even more interesting. If you go by timestamp and time of day, you can see that actually many of these accidents occurred on Thursday night as there is a spike in frequency between -05:00:00 and 05:00:00. The majority of accidents occurred between 10 am and 3 pm. I would have predicted that the majority of the friday fatal accidents would be occurring late at night while people are drinking and are fatigued from the long workweek. Because the data does not actually reflect this prediction, it is possible that people are more prepared to go out on Friday nights. They don't have work the next morning and they have planned well for their evening adventures. On thursday night, alternatively, people are scrambling to get home and get to bed and are pre-occupied with worries of the following workday. 
+
+
+```{r double checking only friday}
+accidents %>% 
+  dplyr::filter(severity =="Fatal") %>% 
+  dplyr::filter(day_of_week != "Friday") %>%
+  head()
+```
 
